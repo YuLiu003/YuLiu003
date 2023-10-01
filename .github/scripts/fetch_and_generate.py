@@ -82,6 +82,8 @@ if __name__ == "__main__":
     with open('stats.svg', 'w') as f:
         f.write(svg)
 
-    # Check if the SVG file changed and if so, commit it
+    # Commit the SVG file even if it didn't change
     os.system("git add stats.svg")
-    os.system("git commit -m 'Update stats'")
+    os.system("git commit -m 'Updated LeetCode Stats'")
+    os.system("git push")
+    
