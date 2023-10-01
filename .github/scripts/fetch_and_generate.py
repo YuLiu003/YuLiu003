@@ -7,6 +7,8 @@ def safe_extract(element):
         return element.strip()
     return element.text.strip() if element else "N/A"
 
+
+
 def get_extended_leetcode_stats(yuliu03):
     url = f"https://leetcode.com/{yuliu03}/"
     response = requests.get(url)
@@ -28,6 +30,8 @@ def get_extended_leetcode_stats(yuliu03):
     if not hard_solved.isdigit():
         raise ValueError(f"Unexpected value for 'hard_solved': {hard_solved}")
 
+        
+
     return {
         'solved': solved,
         'easy_solved': easy_solved,
@@ -35,6 +39,7 @@ def get_extended_leetcode_stats(yuliu03):
         'hard_solved': hard_solved,
         'submissions_last_year': submissions_last_year
     }
+
 
 def generate_svg(stats):
     # Circle (Donut chart) properties
@@ -76,14 +81,19 @@ def generate_svg(stats):
     """
     return svg_content
 
+
+
+
+
+
 if __name__ == "__main__":
     stats = get_extended_leetcode_stats('yuliu03')  # Your LeetCode username
     svg = generate_svg(stats)
+    print(svg)  # Add this line to print the generated SVG
     with open('stats.svg', 'w') as f:
         f.write(svg)
 
-    # Commit the SVG file even if it didn't change
+    # Check if the SVG file changed and if so, commit it
     os.system("git add stats.svg")
     os.system("git commit -m 'Updated LeetCode Stats'")
     os.system("git push")
-    
