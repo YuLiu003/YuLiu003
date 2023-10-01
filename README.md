@@ -1,5 +1,3 @@
-# Leetcode_Dashboard
-
 # LeetCode Dashboard
 
 LeetCode Problems Solved: [solved]/[total]
