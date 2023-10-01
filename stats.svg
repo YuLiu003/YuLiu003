@@ -1,24 +1,24 @@
 
-    <svg width="450" height="250" xmlns="http://www.w3.org/2000/svg" style="background-color:#222; color:white">
+    <svg width="500" height="200" xmlns="http://www.w3.org/2000/svg" style="background-color:#222; color:white">
         <!-- Solved Circle -->
-        <circle cx="100" cy="125" r="70" fill="none" stroke="#555" stroke-width="15" />
-        <circle cx="100" cy="125" r="70" fill="none" stroke="#FFA500" stroke-width="15" stroke-dasharray="440" stroke-dashoffset="414.297635605007" />
-        <text x="100" y="130" font-size="32px" fill="white" text-anchor="middle">168</text>
-        <text x="100" y="155" font-size="16px" fill="#aaa" text-anchor="middle">Solved</text>
+        <circle cx="100" cy="100" r="70" fill="none" stroke="#555" stroke-width="15" />
+        <circle cx="100" cy="100" r="70" fill="none" stroke="#FFA500" stroke-width="15" stroke-dasharray="440" stroke-dashoffset="414.297635605007" />
+        <text x="100" y="105" font-size="32px" fill="white" text-anchor="middle">168</text>
+        <text x="100" y="130" font-size="16px" fill="#aaa" text-anchor="middle">Solved</text>
         
         <!-- Easy Bar -->
-        <rect x="250" y="50" width="30" height="100" fill="#555" />
-        <rect x="250" y="142.36111111111111" width="30" height="7.638888888888889" fill="#81c784" />
-        <text x="290" y="80" font-size="16px" fill="white">Easy 55/720</text>
+        <rect x="250" y="30" width="200" height="20" fill="#555" />
+        <rect x="250" y="30" width="15.277777777777779" height="20" fill="#81c784" />
+        <text x="460" y="45" font-size="14px" fill="white">Easy 55/720 - Beats 79.6%</text>
         
         <!-- Medium Bar -->
-        <rect x="330" y="50" width="30" height="100" fill="#555" />
-        <rect x="330" y="144.61235216819972" width="30" height="5.387647831800263" fill="#ffeb3b" />
-        <text x="370" y="80" font-size="16px" fill="white">Medium 82/1522</text>
+        <rect x="250" y="80" width="200" height="20" fill="#555" />
+        <rect x="250" y="80" width="10.775295663600525" height="20" fill="#ffeb3b" />
+        <text x="460" y="95" font-size="14px" fill="white">Medium 82/1522 - Beats 82.9%</text>
         
         <!-- Hard Bar -->
-        <rect x="410" y="50" width="30" height="100" fill="#555" />
-        <rect x="410" y="145.11041009463722" width="30" height="4.889589905362776" fill="#e57373" />
-        <text x="450" y="80" font-size="16px" fill="white">Hard 31/634</text>
+        <rect x="250" y="130" width="200" height="20" fill="#555" />
+        <rect x="250" y="130" width="9.779179810725552" height="20" fill="#e57373" />
+        <text x="460" y="145" font-size="14px" fill="white">Hard 31/634 - Beats 85.5%</text>
     </svg>
     
