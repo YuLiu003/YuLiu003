@@ -52,30 +52,31 @@ def generate_svg(stats):
     hard_percentage = (int(stats['hard_solved']) / total_hard) * 100
 
     svg_content = f"""
-    <svg width="450" height="250" xmlns="http://www.w3.org/2000/svg" style="background-color:#222; color:white">
+    <svg width="500" height="200" xmlns="http://www.w3.org/2000/svg" style="background-color:#222; color:white">
         <!-- Solved Circle -->
-        <circle cx="100" cy="125" r="70" fill="none" stroke="#555" stroke-width="15" />
-        <circle cx="100" cy="125" r="70" fill="none" stroke="#FFA500" stroke-width="15" stroke-dasharray="440" stroke-dashoffset="{440 - (440 * (int(stats['solved']) / (total_easy + total_medium + total_hard)))}" />
-        <text x="100" y="130" font-size="32px" fill="white" text-anchor="middle">{stats['solved']}</text>
-        <text x="100" y="155" font-size="16px" fill="#aaa" text-anchor="middle">Solved</text>
+        <circle cx="100" cy="100" r="70" fill="none" stroke="#555" stroke-width="15" />
+        <circle cx="100" cy="100" r="70" fill="none" stroke="#FFA500" stroke-width="15" stroke-dasharray="440" stroke-dashoffset="{440 - (440 * (int(stats['solved']) / (total_easy + total_medium + total_hard)))}" />
+        <text x="100" y="105" font-size="32px" fill="white" text-anchor="middle">{stats['solved']}</text>
+        <text x="100" y="130" font-size="16px" fill="#aaa" text-anchor="middle">Solved</text>
         
         <!-- Easy Bar -->
-        <rect x="250" y="50" width="30" height="100" fill="#555" />
-        <rect x="250" y="{50 + (100 - easy_percentage)}" width="30" height="{easy_percentage}" fill="#81c784" />
-        <text x="290" y="80" font-size="16px" fill="white">Easy {stats['easy_solved']}/720</text>
+        <rect x="250" y="30" width="200" height="20" fill="#555" />
+        <rect x="250" y="30" width="{2 * easy_percentage}" height="20" fill="#81c784" />
+        <text x="460" y="45" font-size="14px" fill="white">Easy {stats['easy_solved']}/720 - Beats 79.6%</text>
         
         <!-- Medium Bar -->
-        <rect x="330" y="50" width="30" height="100" fill="#555" />
-        <rect x="330" y="{50 + (100 - medium_percentage)}" width="30" height="{medium_percentage}" fill="#ffeb3b" />
-        <text x="370" y="80" font-size="16px" fill="white">Medium {stats['medium_solved']}/1522</text>
+        <rect x="250" y="80" width="200" height="20" fill="#555" />
+        <rect x="250" y="80" width="{2 * medium_percentage}" height="20" fill="#ffeb3b" />
+        <text x="460" y="95" font-size="14px" fill="white">Medium {stats['medium_solved']}/1522 - Beats 82.9%</text>
         
         <!-- Hard Bar -->
-        <rect x="410" y="50" width="30" height="100" fill="#555" />
-        <rect x="410" y="{50 + (100 - hard_percentage)}" width="30" height="{hard_percentage}" fill="#e57373" />
-        <text x="450" y="80" font-size="16px" fill="white">Hard {stats['hard_solved']}/634</text>
+        <rect x="250" y="130" width="200" height="20" fill="#555" />
+        <rect x="250" y="130" width="{2 * hard_percentage}" height="20" fill="#e57373" />
+        <text x="460" y="145" font-size="14px" fill="white">Hard {stats['hard_solved']}/634 - Beats 85.5%</text>
     </svg>
     """
     return svg_content
+
 
 
 
