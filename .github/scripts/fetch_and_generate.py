@@ -49,7 +49,7 @@ def generate_solved_problems_svg(stats):
     offset = circumference * (1 - solved_percentage)
 
     svg_content = f"""
-    <svg width="400" height="150" xmlns="http://www.w3.org/2000/svg" style="background-color:#1E1E1E; color:white">
+    <svg width="100%" viewBox="0 0 500 150" xmlns="http://www.w3.org/2000/svg" style="background-color:#1E1E1E; color:white">
         <!-- Solved Circle -->
         <circle cx="80" cy="75" r="70" fill="none" stroke="#333" stroke-width="15" />
         <circle cx="80" cy="75" r="70" fill="none" stroke="#FFA500" stroke-width="15" stroke-dasharray="{circumference}" stroke-dashoffset="{offset}" />
