@@ -2,7 +2,7 @@
 
 ## Problems Solved
 
-![LeetCode Stats](./stats.svg)
+<!-- ![LeetCode Stats](./stats.svg) -->
 ![LeetCode Profile](./leetcode_profile.png)
 
 
