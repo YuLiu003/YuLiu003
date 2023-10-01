@@ -1,0 +1,13 @@
+
+    <svg width="500" height="280" xmlns="http://www.w3.org/2000/svg">
+        <rect width="500" height="280" fill="#f6f8fa" />
+        <text x="10" y="30" font-family="Arial" font-size="14" fill="black">LeetCode Statistics</text>
+        <line x1="10" y1="40" x2="490" y2="40" stroke="black" />
+        <text x="10" y="60" font-family="Arial" font-size="12" fill="black">Problems Solved: N/A/N/A</text>
+        <text x="10" y="80" font-family="Arial" font-size="12" fill="black">Contest Rating: N/A</text>
+        <text x="10" y="100" font-family="Arial" font-size="12" fill="black">Top Percentage: N/A</text>
+        <text x="10" y="120" font-family="Arial" font-size="12" fill="black">Easy Solved: N/A</text>
+        <text x="10" y="140" font-family="Arial" font-size="12" fill="black">Medium Solved: N/A</text>
+        <text x="10" y="160" font-family="Arial" font-size="12" fill="black">Hard Solved: N/A</text>
+    </svg>
+    
