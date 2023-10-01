@@ -3,8 +3,11 @@ from bs4 import BeautifulSoup
 import os
 
 def safe_extract(element):
-    """Utility function to safely extract text data from a BeautifulSoup element."""
+    if isinstance(element, str):
+        return element.strip()
     return element.text.strip() if element else "N/A"
+
+
 
 def get_extended_leetcode_stats(yuliu03):
     url = f"https://leetcode.com/{yuliu03}/"
@@ -16,7 +19,7 @@ def get_extended_leetcode_stats(yuliu03):
     easy_solved = safe_extract(soup.select('span.text-base.font-medium')[0])
     medium_solved = safe_extract(soup.select('span.text-base.font-medium')[1])
     hard_solved = safe_extract(soup.select('span.text-base.font-medium')[2])
-    submissions_last_year = safe_extract(soup.select_one('span.text-base.font-medium'))
+    submissions_last_year = safe_extract(soup.select_one('span.font-medium:not(.text-base)'))
 
     return {
         'solved': solved,
@@ -28,20 +31,22 @@ def get_extended_leetcode_stats(yuliu03):
 
 
 def generate_svg(stats):
-    """Generate a custom SVG representation of the fetched LeetCode stats."""
     svg_content = f"""
-    <svg width="500" height="280" xmlns="http://www.w3.org/2000/svg">
-        <rect width="500" height="280" fill="#f6f8fa" />
-        <text x="10" y="30" font-family="Arial" font-size="14" fill="black">LeetCode Statistics</text>
-        <line x1="10" y1="40" x2="490" y2="40" stroke="black" />
-        <text x="10" y="60" font-family="Arial" font-size="12" fill="black">Problems Solved: {stats['solved']}</text>
-        <text x="10" y="80" font-family="Arial" font-size="12" fill="black">Easy Solved: {stats['easy_solved']}</text>
-        <text x="10" y="100" font-family="Arial" font-size="12" fill="black">Medium Solved: {stats['medium_solved']}</text>
-        <text x="10" y="120" font-family="Arial" font-size="12" fill="black">Hard Solved: {stats['hard_solved']}</text>
-        <text x="10" y="140" font-family="Arial" font-size="12" fill="black">Submissions Last Year: {stats['submissions_last_year']}</text>
+    <svg width="400" height="200" xmlns="http://www.w3.org/2000/svg">
+        <rect width="100" height="{int(stats['easy_solved'])}" x="10" y="50" fill="#81c784" />
+        <text x="10" y="40" font-size="12" fill="#000">Easy: {stats['easy_solved']}</text>
+        
+        <rect width="100" height="{int(stats['medium_solved'])}" x="150" y="50" fill="#ffeb3b" />
+        <text x="150" y="40" font-size="12" fill="#000">Medium: {stats['medium_solved']}</text>
+        
+        <rect width="100" height="{int(stats['hard_solved'])}" x="290" y="50" fill="#e57373" />
+        <text x="290" y="40" font-size="12" fill="#000">Hard: {stats['hard_solved']}</text>
+        
+        <text x="10" y="180" font-size="14" fill="#000">Submissions Last Year: {stats['submissions_last_year']}</text>
     </svg>
     """
     return svg_content
+
 
 if __name__ == "__main__":
     stats = get_extended_leetcode_stats('yuliu03')  # Your LeetCode username
