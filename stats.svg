@@ -1,10 +1,10 @@
 
-    <svg width="600" height="200" xmlns="http://www.w3.org/2000/svg" style="background-color:#222; color:white; font-family:Arial, sans-serif">
+    <svg width="480" height="180" xmlns="http://www.w3.org/2000/svg" style="background-color:#222; color:white; font-family:Arial, sans-serif">
         <!-- Solved Circle -->
-        <circle cx="90" cy="90" r="60" fill="none" stroke="#555" stroke-width="16" />
-        <circle cx="90" cy="90" r="60" fill="none" stroke="url(#orangeGradient)" stroke-width="16" stroke-dasharray="376.9908" stroke-dashoffset="354.9690842837274" />
-        <text x="90" y="100" font-size="32px" fill="white" text-anchor="middle">168</text>
-        <text x="90" y="130" font-size="16px" fill="#aaa" text-anchor="middle">Solved</text>
+        <circle cx="80" cy="90" r="50" fill="none" stroke="#555" stroke-width="14" />
+        <circle cx="80" cy="90" r="50" fill="none" stroke="url(#orangeGradient)" stroke-width="14" stroke-dasharray="314.159" stroke-dashoffset="295.8075702364395" />
+        <text x="80" y="98" font-size="28px" fill="white" text-anchor="middle">168</text>
+        <text x="80" y="125" font-size="14px" fill="#aaa" text-anchor="middle">Solved</text>
 
         <!-- Gradient for circle -->
         <defs>
@@ -16,18 +16,18 @@
 
         <!-- Bars: Base + Fill + Text -->
         <!-- Easy -->
-        <rect x="200" y="35" width="220" height="20" fill="#555" />
-        <rect x="200" y="35" width="16.805555555555557" height="20" fill="#81c784" />
-        <text x="430" y="50" font-size="14px" fill="white">Easy 55/720 - Beats 79.6%</text>
+        <rect x="190" y="35" width="180" height="16" fill="#555" />
+        <rect x="190" y="35" width="13.750000000000002" height="16" fill="#81c784" />
+        <text x="380" y="48" font-size="12px" fill="white">Easy 55/720 - Beats 79.6%</text>
 
         <!-- Medium -->
-        <rect x="200" y="80" width="220" height="20" fill="#555" />
-        <rect x="200" y="80" width="11.852825229960578" height="20" fill="#FFA500" />
-        <text x="430" y="95" font-size="14px" fill="white">Medium 82/1522 - Beats 82.9%</text>
+        <rect x="190" y="80" width="180" height="16" fill="#555" />
+        <rect x="190" y="80" width="9.697766097240473" height="16" fill="#FFA500" />
+        <text x="380" y="93" font-size="12px" fill="white">Medium 82/1522 - Beats 82.9%</text>
 
         <!-- Hard -->
-        <rect x="200" y="125" width="220" height="20" fill="#555" />
-        <rect x="200" y="125" width="10.757097791798108" height="20" fill="#e57373" />
-        <text x="430" y="140" font-size="14px" fill="white">Hard 31/634 - Beats 85.5%</text>
+        <rect x="190" y="125" width="180" height="16" fill="#555" />
+        <rect x="190" y="125" width="8.801261829652997" height="16" fill="#e57373" />
+        <text x="380" y="138" font-size="12px" fill="white">Hard 31/634 - Beats 85.5%</text>
     </svg>
     
