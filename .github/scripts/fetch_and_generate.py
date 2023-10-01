@@ -42,41 +42,41 @@ def get_extended_leetcode_stats(yuliu03):
 
 
 def generate_svg(stats):
-    # For the circle bar (donut chart)
-    circle_radius = 46
-    circle_circumference = 2 * 3.141592653589793 * circle_radius
-    percent_solved = int(stats['solved']) / (int(stats['easy_solved']) + int(stats['medium_solved']) + int(stats['hard_solved']))
-    circle_dashoffset = circle_circumference * (1 - percent_solved)
+    # Calculating percentages
+    total_easy = 720
+    total_medium = 1522
+    total_hard = 634
 
-    # For horizontal bars
-    max_easy = 720
-    max_medium = 1522
-    max_hard = 634
-    bar_width = 150
-    easy_width = (int(stats['easy_solved']) / max_easy) * bar_width
-    medium_width = (int(stats['medium_solved']) / max_medium) * bar_width
-    hard_width = (int(stats['hard_solved']) / max_hard) * bar_width
+    easy_percentage = (int(stats['easy_solved']) / total_easy) * 100
+    medium_percentage = (int(stats['medium_solved']) / total_medium) * 100
+    hard_percentage = (int(stats['hard_solved']) / total_hard) * 100
 
     svg_content = f"""
-    <svg width="600" height="200" xmlns="http://www.w3.org/2000/svg">
-        <!-- Circle bar for total solved problems -->
-        <circle cx="60" cy="100" r="{circle_radius}" fill="none" stroke="#e0e0e0" stroke-width="8"></circle>
-        <circle cx="60" cy="100" r="{circle_radius}" fill="none" stroke="#ff9800" stroke-width="8" stroke-dasharray="{circle_circumference}" stroke-dashoffset="{circle_dashoffset}"></circle>
-        <text x="60" y="105" font-size="24" fill="#000" text-anchor="middle">{stats['solved']}</text>
+    <svg width="450" height="250" xmlns="http://www.w3.org/2000/svg" style="background-color:#222; color:white">
+        <!-- Solved Circle -->
+        <circle cx="100" cy="125" r="70" fill="none" stroke="#555" stroke-width="15" />
+        <circle cx="100" cy="125" r="70" fill="none" stroke="#FFA500" stroke-width="15" stroke-dasharray="440" stroke-dashoffset="{440 - (440 * (int(stats['solved']) / (total_easy + total_medium + total_hard)))}" />
+        <text x="100" y="130" font-size="32px" fill="white" text-anchor="middle">{stats['solved']}</text>
+        <text x="100" y="155" font-size="16px" fill="#aaa" text-anchor="middle">Solved</text>
         
-        <!-- Horizontal bars -->
-        <!-- Easy -->
-        <rect x="150" y="60" width="{easy_width}" height="20" fill="#4caf50"></rect>
-        <text x="155" y="75" font-size="16" fill="#ffffff">{stats['easy_solved']}/720</text>
-        <!-- Medium -->
-        <rect x="150" y="90" width="{medium_width}" height="20" fill="#ff9800"></rect>
-        <text x="155" y="105" font-size="16" fill="#ffffff">{stats['medium_solved']}/1522</text>
-        <!-- Hard -->
-        <rect x="150" y="120" width="{hard_width}" height="20" fill="#e57373"></rect>
-        <text x="155" y="135" font-size="16" fill="#ffffff">{stats['hard_solved']}/634</text>
+        <!-- Easy Bar -->
+        <rect x="250" y="50" width="30" height="100" fill="#555" />
+        <rect x="250" y="{50 + (100 - easy_percentage)}" width="30" height="{easy_percentage}" fill="#81c784" />
+        <text x="290" y="80" font-size="16px" fill="white">Easy {stats['easy_solved']}/720</text>
+        
+        <!-- Medium Bar -->
+        <rect x="330" y="50" width="30" height="100" fill="#555" />
+        <rect x="330" y="{50 + (100 - medium_percentage)}" width="30" height="{medium_percentage}" fill="#ffeb3b" />
+        <text x="370" y="80" font-size="16px" fill="white">Medium {stats['medium_solved']}/1522</text>
+        
+        <!-- Hard Bar -->
+        <rect x="410" y="50" width="30" height="100" fill="#555" />
+        <rect x="410" y="{50 + (100 - hard_percentage)}" width="30" height="{hard_percentage}" fill="#e57373" />
+        <text x="450" y="80" font-size="16px" fill="white">Hard {stats['hard_solved']}/634</text>
     </svg>
     """
     return svg_content
+
 
 
 
