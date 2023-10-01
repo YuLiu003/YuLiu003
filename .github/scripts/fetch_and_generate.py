@@ -7,28 +7,25 @@ def safe_extract(element):
     return element.text.strip() if element else "N/A"
 
 def get_extended_leetcode_stats(yuliu03):
-    """Fetch and extract the specified stats from a LeetCode user profile."""
     url = f"https://leetcode.com/{yuliu03}/"
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
-    
-    solved = safe_extract(soup.find('span', class_='badge progress-bar-success'))
-    total = safe_extract(soup.find('span', class_='badge total-solved-count'))
-    contest_rating = safe_extract(soup.find('div', class_='css-s70srj'))
-    top_percentage = safe_extract(soup.find('div', class_='css-aknsx9'))
-    easy_solved = safe_extract(soup.find('span', class_='css-ea78td'))
-    medium_solved = safe_extract(soup.find('span', class_='css-4ob7od'))
-    hard_solved = safe_extract(soup.find('span', class_='css-sjisc5'))
-    
+
+    # Using more generic selectors
+    solved = safe_extract(soup.select_one('div.font-medium'))
+    easy_solved = safe_extract(soup.select('span.text-base.font-medium')[0])
+    medium_solved = safe_extract(soup.select('span.text-base.font-medium')[1])
+    hard_solved = safe_extract(soup.select('span.text-base.font-medium')[2])
+    submissions_last_year = safe_extract(soup.select_one('span.text-base.font-medium'))
+
     return {
         'solved': solved,
-        'total': total,
-        'contest_rating': contest_rating,
-        'top_percentage': top_percentage,
         'easy_solved': easy_solved,
         'medium_solved': medium_solved,
-        'hard_solved': hard_solved
+        'hard_solved': hard_solved,
+        'submissions_last_year': submissions_last_year
     }
+
 
 def generate_svg(stats):
     """Generate a custom SVG representation of the fetched LeetCode stats."""
@@ -37,12 +34,11 @@ def generate_svg(stats):
         <rect width="500" height="280" fill="#f6f8fa" />
         <text x="10" y="30" font-family="Arial" font-size="14" fill="black">LeetCode Statistics</text>
         <line x1="10" y1="40" x2="490" y2="40" stroke="black" />
-        <text x="10" y="60" font-family="Arial" font-size="12" fill="black">Problems Solved: {stats['solved']}/{stats['total']}</text>
-        <text x="10" y="80" font-family="Arial" font-size="12" fill="black">Contest Rating: {stats['contest_rating']}</text>
-        <text x="10" y="100" font-family="Arial" font-size="12" fill="black">Top Percentage: {stats['top_percentage']}</text>
-        <text x="10" y="120" font-family="Arial" font-size="12" fill="black">Easy Solved: {stats['easy_solved']}</text>
-        <text x="10" y="140" font-family="Arial" font-size="12" fill="black">Medium Solved: {stats['medium_solved']}</text>
-        <text x="10" y="160" font-family="Arial" font-size="12" fill="black">Hard Solved: {stats['hard_solved']}</text>
+        <text x="10" y="60" font-family="Arial" font-size="12" fill="black">Problems Solved: {stats['solved']}</text>
+        <text x="10" y="80" font-family="Arial" font-size="12" fill="black">Easy Solved: {stats['easy_solved']}</text>
+        <text x="10" y="100" font-family="Arial" font-size="12" fill="black">Medium Solved: {stats['medium_solved']}</text>
+        <text x="10" y="120" font-family="Arial" font-size="12" fill="black">Hard Solved: {stats['hard_solved']}</text>
+        <text x="10" y="140" font-family="Arial" font-size="12" fill="black">Submissions Last Year: {stats['submissions_last_year']}</text>
     </svg>
     """
     return svg_content
