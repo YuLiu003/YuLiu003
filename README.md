@@ -1,8 +1,7 @@
-# LeetCode Dashboard
+# Yu Liu's GitHub Profile
 
-LeetCode Problems Solved: [solved]/[total]
+## LeetCode Statistics
 
-... (any other content you wish to include)
-
+![LeetCode Stats](./stats.svg)
 
 
