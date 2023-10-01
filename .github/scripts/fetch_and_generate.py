@@ -2,8 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 import os
 
-def get_extended_leetcode_stats(yuliu03):
-    url = f"https://leetcode.com/{yuliu03}/"
+def get_extended_leetcode_stats(username):
+    url = f"https://leetcode.com/{username}/"
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
     
@@ -40,7 +40,7 @@ def generate_svg(stats):
     return svg_content
 
 if __name__ == "__main__":
-    stats = get_extended_leetcode_stats('yuliu03')  # Your LeetCode username
+    stats = get_extended_leetcode_stats('YuLiu003')  # Your LeetCode username
     svg = generate_svg(stats)
     with open('stats.svg', 'w') as f:
         f.write(svg)
