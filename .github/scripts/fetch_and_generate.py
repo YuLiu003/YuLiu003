@@ -43,7 +43,7 @@ def get_extended_leetcode_stats(yuliu03):
 
 def generate_svg(stats):
     # Circle (Donut chart) properties
-    cx, cy, r = 70, 70, 50
+    cx, cy, r = 60, 60, 45
     circumference = 2 * 3.14159 * r
     total_easy = 720
     total_medium = 1522
@@ -52,39 +52,31 @@ def generate_svg(stats):
     offset = circumference * (1 - solved_percentage)
 
     # Bar properties
-    bar_width, bar_height = 140, 14
+    bar_width, bar_height = 120, 14
 
     svg_content = f"""
-    <svg width="420" height="150" xmlns="http://www.w3.org/2000/svg" style="background-color:#222; color:white; font-family:Arial, sans-serif">
+    <svg width="380" height="140" xmlns="http://www.w3.org/2000/svg" style="background-color:#222; color:white; font-family:Arial, sans-serif">
         <!-- Solved Circle -->
-        <circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="#555" stroke-width="12" />
-        <circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="url(#orangeGradient)" stroke-width="12" stroke-dasharray="{circumference}" stroke-dashoffset="{offset}" />
-        <text x="{cx}" y="{cy + 6}" font-size="24px" fill="white" text-anchor="middle">{stats['solved']}</text>
-        <text x="{cx}" y="{cy + 28}" font-size="12px" fill="#aaa" text-anchor="middle">Solved</text>
-
-        <!-- Gradient for circle -->
-        <defs>
-            <linearGradient id="orangeGradient">
-                <stop offset="10%" stop-color="#FFA500" />
-                <stop offset="90%" stop-color="#FF4500" />
-            </linearGradient>
-        </defs>
+        <circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="#555" stroke-width="10" />
+        <circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="#FFA500" stroke-width="10" stroke-dasharray="{circumference}" stroke-dashoffset="{offset}" />
+        <text x="{cx}" y="{cy + 5}" font-size="24px" fill="white" text-anchor="middle">{stats['solved']}</text>
+        <text x="{cx}" y="{cy + 25}" font-size="12px" fill="#aaa" text-anchor="middle">Solved</text>
 
         <!-- Bars: Base + Fill + Text -->
         <!-- Easy -->
-        <rect x="160" y="20" width="{bar_width}" height="{bar_height}" fill="#555" />
-        <rect x="160" y="20" width="{bar_width * (int(stats['easy_solved']) / total_easy)}" height="{bar_height}" fill="#81c784" />
-        <text x="310" y="32" font-size="12px" fill="white">Easy {stats['easy_solved']}/720 - Beats 79.6%</text>
+        <rect x="140" y="30" width="{bar_width}" height="{bar_height}" fill="#555" />
+        <rect x="140" y="30" width="{bar_width * (int(stats['easy_solved']) / total_easy)}" height="{bar_height}" fill="#81c784" />
+        <text x="270" y="41" font-size="12px" fill="white">Easy {stats['easy_solved']}/720</text>
 
         <!-- Medium -->
-        <rect x="160" y="60" width="{bar_width}" height="{bar_height}" fill="#555" />
-        <rect x="160" y="60" width="{bar_width * (int(stats['medium_solved']) / total_medium)}" height="{bar_height}" fill="#FFA500" />
-        <text x="310" y="72" font-size="12px" fill="white">Medium {stats['medium_solved']}/1522 - Beats 82.9%</text>
+        <rect x="140" y="60" width="{bar_width}" height="{bar_height}" fill="#555" />
+        <rect x="140" y="60" width="{bar_width * (int(stats['medium_solved']) / total_medium)}" height="{bar_height}" fill="#FFA500" />
+        <text x="270" y="71" font-size="12px" fill="white">Medium {stats['medium_solved']}/1522</text>
 
         <!-- Hard -->
-        <rect x="160" y="100" width="{bar_width}" height="{bar_height}" fill="#555" />
-        <rect x="160" y="100" width="{bar_width * (int(stats['hard_solved']) / total_hard)}" height="{bar_height}" fill="#e57373" />
-        <text x="310" y="112" font-size="12px" fill="white">Hard {stats['hard_solved']}/634 - Beats 85.5%</text>
+        <rect x="140" y="90" width="{bar_width}" height="{bar_height}" fill="#555" />
+        <rect x="140" y="90" width="{bar_width * (int(stats['hard_solved']) / total_hard)}" height="{bar_height}" fill="#e57373" />
+        <text x="270" y="101" font-size="12px" fill="white">Hard {stats['hard_solved']}/634</text>
     </svg>
     """
     return svg_content
