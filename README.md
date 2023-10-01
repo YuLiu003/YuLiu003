@@ -1,6 +1,6 @@
-# Yu Liu's GitHub Profile
+# Leetcode Profile
 
-## LeetCode Statistics
+## Problems Solved
 
 ![LeetCode Stats](./stats.svg)
 
